@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.inc": "php",
+        "ostream": "cpp"
+    },
+    "editor.formatOnSave": true,
+    "clang-format.executable": "C:\\Program Files\\LLVM\\bin\\clang-format",
+    "cmake.generator": "Visual Studio 15 2017 Win64"
+}

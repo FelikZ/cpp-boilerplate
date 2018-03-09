@@ -1,0 +1,433 @@
+{
+  "variant": {
+    "label": "Debug",
+    "keywordSettings": {
+      "buildType": "debug"
+    },
+    "description": "Emit debug information without performing optimizations"
+  },
+  "activeEnvironments": [],
+  "codeModel": {
+    "configurations": [
+      {
+        "name": "Debug",
+        "projects": [
+          {
+            "buildDirectory": "C:/Data/Work/TasksParallel/build",
+            "name": "sample_project",
+            "sourceDirectory": "C:/Data/Work/TasksParallel",
+            "targets": [
+              {
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": false,
+                    "sources": [
+                      "CMakeLists.txt"
+                    ]
+                  }
+                ],
+                "fullName": "ALL_BUILD",
+                "name": "ALL_BUILD",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "UTILITY"
+              },
+              {
+                "artifacts": [
+                  "C:/Data/Work/TasksParallel/build/Debug/main.exe",
+                  "C:/Data/Work/TasksParallel/build/Debug/main.lib",
+                  "C:/Data/Work/TasksParallel/build/Debug/main.pdb"
+                ],
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -Wall -std=c++11 /MDd /Zi /Ob0 /Od /RTC1  ",
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/main.cpp"
+                    ]
+                  },
+                  {
+                    "isGenerated": false,
+                    "sources": [
+                      "CMakeLists.txt"
+                    ]
+                  }
+                ],
+                "fullName": "main.exe",
+                "linkFlags": "/machine:x64 /debug /INCREMENTAL /subsystem:console",
+                "linkLanguageFlags": "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -Wall -std=c++11 /MDd /Zi /Ob0 /Od /RTC1",
+                "linkLibraries": "Debug\\stdafx.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+                "linkerLanguage": "CXX",
+                "name": "main",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "EXECUTABLE"
+              },
+              {
+                "artifacts": [
+                  "C:/Data/Work/TasksParallel/build/Debug/stdafx.lib",
+                  "C:/Data/Work/TasksParallel/build/Debug/stdafx.lib",
+                  "C:/Data/Work/TasksParallel/build/Debug/stdafx.pdb"
+                ],
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -Wall -std=c++11 /MDd /Zi /Ob0 /Od /RTC1  ",
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/stdafx.cpp"
+                    ]
+                  },
+                  {
+                    "isGenerated": false,
+                    "sources": [
+                      "CMakeLists.txt"
+                    ]
+                  }
+                ],
+                "fullName": "stdafx.lib",
+                "linkFlags": "/machine:x64",
+                "linkerLanguage": "CXX",
+                "name": "stdafx",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "STATIC_LIBRARY"
+              },
+              {
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/a8795c7f56231d343268441c51e703bb/generate.stamp.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ZERO_CHECK",
+                "name": "ZERO_CHECK",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "UTILITY"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Release",
+        "projects": [
+          {
+            "buildDirectory": "C:/Data/Work/TasksParallel/build",
+            "name": "sample_project",
+            "sourceDirectory": "C:/Data/Work/TasksParallel",
+            "targets": [
+              {
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": false,
+                    "sources": [
+                      "CMakeLists.txt"
+                    ]
+                  }
+                ],
+                "fullName": "ALL_BUILD",
+                "name": "ALL_BUILD",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "UTILITY"
+              },
+              {
+                "artifacts": [
+                  "C:/Data/Work/TasksParallel/build/Release/main.exe",
+                  "C:/Data/Work/TasksParallel/build/Release/main.lib",
+                  "C:/Data/Work/TasksParallel/build/Release/main.pdb"
+                ],
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -Wall -std=c++11 /MD /O2 /Ob2 /DNDEBUG  ",
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/main.cpp"
+                    ]
+                  },
+                  {
+                    "isGenerated": false,
+                    "sources": [
+                      "CMakeLists.txt"
+                    ]
+                  }
+                ],
+                "fullName": "main.exe",
+                "linkFlags": "/machine:x64 /INCREMENTAL:NO /subsystem:console",
+                "linkLanguageFlags": "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -Wall -std=c++11 /MD /O2 /Ob2 /DNDEBUG",
+                "linkLibraries": "Release\\stdafx.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+                "linkerLanguage": "CXX",
+                "name": "main",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "EXECUTABLE"
+              },
+              {
+                "artifacts": [
+                  "C:/Data/Work/TasksParallel/build/Release/stdafx.lib",
+                  "C:/Data/Work/TasksParallel/build/Release/stdafx.lib",
+                  "C:/Data/Work/TasksParallel/build/Release/stdafx.pdb"
+                ],
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -Wall -std=c++11 /MD /O2 /Ob2 /DNDEBUG  ",
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/stdafx.cpp"
+                    ]
+                  },
+                  {
+                    "isGenerated": false,
+                    "sources": [
+                      "CMakeLists.txt"
+                    ]
+                  }
+                ],
+                "fullName": "stdafx.lib",
+                "linkFlags": "/machine:x64",
+                "linkerLanguage": "CXX",
+                "name": "stdafx",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "STATIC_LIBRARY"
+              },
+              {
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/a8795c7f56231d343268441c51e703bb/generate.stamp.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ZERO_CHECK",
+                "name": "ZERO_CHECK",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "UTILITY"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "MinSizeRel",
+        "projects": [
+          {
+            "buildDirectory": "C:/Data/Work/TasksParallel/build",
+            "name": "sample_project",
+            "sourceDirectory": "C:/Data/Work/TasksParallel",
+            "targets": [
+              {
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": false,
+                    "sources": [
+                      "CMakeLists.txt"
+                    ]
+                  }
+                ],
+                "fullName": "ALL_BUILD",
+                "name": "ALL_BUILD",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "UTILITY"
+              },
+              {
+                "artifacts": [
+                  "C:/Data/Work/TasksParallel/build/MinSizeRel/main.exe",
+                  "C:/Data/Work/TasksParallel/build/MinSizeRel/main.lib",
+                  "C:/Data/Work/TasksParallel/build/MinSizeRel/main.pdb"
+                ],
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -Wall -std=c++11 /MD /O1 /Ob1 /DNDEBUG  ",
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/main.cpp"
+                    ]
+                  },
+                  {
+                    "isGenerated": false,
+                    "sources": [
+                      "CMakeLists.txt"
+                    ]
+                  }
+                ],
+                "fullName": "main.exe",
+                "linkFlags": "/machine:x64 /INCREMENTAL:NO /subsystem:console",
+                "linkLanguageFlags": "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -Wall -std=c++11 /MD /O1 /Ob1 /DNDEBUG",
+                "linkLibraries": "MinSizeRel\\stdafx.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+                "linkerLanguage": "CXX",
+                "name": "main",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "EXECUTABLE"
+              },
+              {
+                "artifacts": [
+                  "C:/Data/Work/TasksParallel/build/MinSizeRel/stdafx.lib",
+                  "C:/Data/Work/TasksParallel/build/MinSizeRel/stdafx.lib",
+                  "C:/Data/Work/TasksParallel/build/MinSizeRel/stdafx.pdb"
+                ],
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -Wall -std=c++11 /MD /O1 /Ob1 /DNDEBUG  ",
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/stdafx.cpp"
+                    ]
+                  },
+                  {
+                    "isGenerated": false,
+                    "sources": [
+                      "CMakeLists.txt"
+                    ]
+                  }
+                ],
+                "fullName": "stdafx.lib",
+                "linkFlags": "/machine:x64",
+                "linkerLanguage": "CXX",
+                "name": "stdafx",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "STATIC_LIBRARY"
+              },
+              {
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/a8795c7f56231d343268441c51e703bb/generate.stamp.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ZERO_CHECK",
+                "name": "ZERO_CHECK",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "UTILITY"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "RelWithDebInfo",
+        "projects": [
+          {
+            "buildDirectory": "C:/Data/Work/TasksParallel/build",
+            "name": "sample_project",
+            "sourceDirectory": "C:/Data/Work/TasksParallel",
+            "targets": [
+              {
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": false,
+                    "sources": [
+                      "CMakeLists.txt"
+                    ]
+                  }
+                ],
+                "fullName": "ALL_BUILD",
+                "name": "ALL_BUILD",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "UTILITY"
+              },
+              {
+                "artifacts": [
+                  "C:/Data/Work/TasksParallel/build/RelWithDebInfo/main.exe",
+                  "C:/Data/Work/TasksParallel/build/RelWithDebInfo/main.lib",
+                  "C:/Data/Work/TasksParallel/build/RelWithDebInfo/main.pdb"
+                ],
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -Wall -std=c++11 /MD /Zi /O2 /Ob1 /DNDEBUG  ",
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/main.cpp"
+                    ]
+                  },
+                  {
+                    "isGenerated": false,
+                    "sources": [
+                      "CMakeLists.txt"
+                    ]
+                  }
+                ],
+                "fullName": "main.exe",
+                "linkFlags": "/machine:x64 /debug /INCREMENTAL /subsystem:console",
+                "linkLanguageFlags": "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -Wall -std=c++11 /MD /Zi /O2 /Ob1 /DNDEBUG",
+                "linkLibraries": "RelWithDebInfo\\stdafx.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+                "linkerLanguage": "CXX",
+                "name": "main",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "EXECUTABLE"
+              },
+              {
+                "artifacts": [
+                  "C:/Data/Work/TasksParallel/build/RelWithDebInfo/stdafx.lib",
+                  "C:/Data/Work/TasksParallel/build/RelWithDebInfo/stdafx.lib",
+                  "C:/Data/Work/TasksParallel/build/RelWithDebInfo/stdafx.pdb"
+                ],
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -Wall -std=c++11 /MD /Zi /O2 /Ob1 /DNDEBUG  ",
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/stdafx.cpp"
+                    ]
+                  },
+                  {
+                    "isGenerated": false,
+                    "sources": [
+                      "CMakeLists.txt"
+                    ]
+                  }
+                ],
+                "fullName": "stdafx.lib",
+                "linkFlags": "/machine:x64",
+                "linkerLanguage": "CXX",
+                "name": "stdafx",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "STATIC_LIBRARY"
+              },
+              {
+                "buildDirectory": "C:/Data/Work/TasksParallel/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/a8795c7f56231d343268441c51e703bb/generate.stamp.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ZERO_CHECK",
+                "name": "ZERO_CHECK",
+                "sourceDirectory": "C:/Data/Work/TasksParallel",
+                "type": "UTILITY"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "cookie": "0.585577737775111",
+    "inReplyTo": "codemodel",
+    "type": "reply"
+  }
+}

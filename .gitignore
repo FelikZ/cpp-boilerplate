@@ -1,0 +1,9 @@
+# vim
+*.swp
+*~
+.ycm_extra_conf.*
+/.vs
+
+# project
+/build
+
