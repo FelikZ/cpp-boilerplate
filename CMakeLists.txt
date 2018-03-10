@@ -10,28 +10,32 @@ project(sample_project CXX)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/third-party/FindTBB")
 
 find_package(TBB)
-find_package(STD)
+MESSAGE( STATUS "TBB_INCLUDE_DIRS:         " ${TBB_INCLUDE_DIRS} )
+MESSAGE( STATUS "TBB_LIBRARIES:         " ${TBB_LIBRARIES} )
 
-# Core library. *.cpp should be added here.
-# add_library(stdafx ./src/stdafx.cpp)
-
+set(TBB_SEARCH_BINARY $ENV{TBB_BINARY_DIR})
+MESSAGE( STATUS "TBB_SEARCH_BINARY:         " ${TBB_SEARCH_BINARY} )
 
 # Main entry point.
 add_executable(main ./src/main.cpp)
-
-MESSAGE( STATUS "TBB_INCLUDE_DIRS:         " ${TBB_INCLUDE_DIRS} )
 
 # Add flags.
 target_compile_options(main PRIVATE -Wall)
 target_include_directories(main PRIVATE ${TBB_INCLUDE_DIRS})
 target_compile_definitions(main PRIVATE ${TBB_DEFINITIONS})
 
-# Link core to main.
-target_link_libraries(
-  main
-  tbb
-  # stdafx
-)
+# Link
+target_link_libraries(main optimized ${TBB_LIBRARIES})
+target_link_libraries(main debug ${TBB_LIBRARIES_DEBUG})
+
+# copy dependencies
+file(GLOB TBB_BINARIES ${TBB_SEARCH_BINARY}/*.*)
+MESSAGE( STATUS "TBB_BINARIES:         " ${TBB_BINARIES} )
+
+add_custom_command(TARGET main POST_BUILD        # Adds a post-build event to MyTest
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
+    ${TBB_BINARIES}
+    $<TARGET_FILE_DIR:main>)                 # <--this is out-file path
 
 
 if(TESTS)

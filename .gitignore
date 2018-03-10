@@ -3,6 +3,7 @@
 *~
 .ycm_extra_conf.*
 /.vs
+/.vscode/.cmaketools.json
 
 # project
 /build

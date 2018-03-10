@@ -6,8 +6,15 @@
         "thread": "cpp"
     },
     "editor.formatOnSave": true,
+    // Windows
+    "cmake.windows.environment": {
+        "TBB_INSTALL_DIR": "C:/Users/Home/lib/tbb",
+        "TBB_BINARY_DIR": "C:/Users/Home/lib/tbb/bin/intel64/vc14",
+        "LIBRARY_PATH": "C:/Users/Home/lib/tbb/lib/intel64/vc14"
+    },
+    "cmake.windows.generator": "Visual Studio 15 2017 Win64",
+    "clang-format.executable": "clang-format",
+    // General
     "C_Cpp.clang_format_path": "clang-format",
-    // "clang-format.executable": "C:\\Program Files\\LLVM\\bin\\clang-format",
     "cmake.generator": "Unix Makefiles"
-    // "cmake.generator": "Visual Studio 15 2017 Win64"
 }
