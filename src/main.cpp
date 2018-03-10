@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 
-using namespace concurrency;
+using namespace tbb;
 using namespace std;
 
 class Main {
@@ -44,12 +44,15 @@ void camera() {
   wcout << "+ ";
 }
 
-int wmain() {
+int main() {
+  task_group tg;
   for (auto i = 0; i < 10000; i++) {
-    task<void> t3(camera);
-    task<void> t2(process);
-    task<void> t(render);
+    tg.run(camera);
+    tg.run(process);
+    tg.run(render);
 
     this_thread::sleep_for(1ms);
   }
+
+  return 0;
 }

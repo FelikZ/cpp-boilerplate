@@ -5,8 +5,9 @@
 
 #pragma once
 
-#include <concurrent_queue.h>
 #include <iostream>
-#include <ppltasks.h>
+#include <tbb/concurrent_queue.h>
+#include <tbb/task_group.h>
+#include <thread>
 
 // TODO: reference additional headers your program requires here

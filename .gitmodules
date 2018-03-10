@@ -2,3 +2,6 @@
 	branch = release-1.8.0
 	path = third-party/googletest
 	url = https://github.com/google/googletest.git
+[submodule "third-party/FindTBB"]
+	path = third-party/FindTBB
+	url = https://github.com/justusc/FindTBB.git
