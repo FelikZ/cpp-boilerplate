@@ -6,6 +6,10 @@
         "thread": "cpp"
     },
     "editor.formatOnSave": true,
+    // OSX
+    "cmake.osx.environment": {
+        "TBB_BINARY_DIR": "/usr/local/Cellar/tbb/2018_U2/lib"
+    },
     // Windows
     "cmake.windows.environment": {
         "TBB_INSTALL_DIR": "C:/Users/Home/lib/tbb",

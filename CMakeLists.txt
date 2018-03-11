@@ -25,8 +25,7 @@ target_include_directories(main PRIVATE ${TBB_INCLUDE_DIRS})
 target_compile_definitions(main PRIVATE ${TBB_DEFINITIONS})
 
 # Link
-target_link_libraries(main optimized ${TBB_LIBRARIES})
-target_link_libraries(main debug ${TBB_LIBRARIES_DEBUG})
+target_link_libraries(main general ${TBB_LIBRARIES})
 
 # copy dependencies
 file(GLOB TBB_BINARIES ${TBB_SEARCH_BINARY}/*.*)
