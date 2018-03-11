@@ -45,12 +45,8 @@ void camera() {
 }
 
 int main() {
-  task_group tg;
   for (auto i = 0; i < 10000; i++) {
-    tg.run(camera);
-    tg.run(process);
-    tg.run(render);
-
+    parallel_invoke(camera, process, render);
     this_thread::sleep_for(1ms);
   }
 
