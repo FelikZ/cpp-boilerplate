@@ -17,12 +17,15 @@ MESSAGE( STATUS "TBB_LIBRARIES:         " ${TBB_LIBRARIES} )
 add_executable(main ./src/main.cpp)
 
 # Add flags.
-target_compile_options(main PRIVATE -Wall)
+target_compile_options(main PRIVATE -W4)
 target_include_directories(main PRIVATE ${TBB_INCLUDE_DIRS})
 target_compile_definitions(main PRIVATE ${TBB_DEFINITIONS})
 
 # Link
 target_link_libraries(main general ${TBB_LIBRARIES})
+if (WIN32)
+  target_link_libraries(main debug ${TBB_LIBRARIES_DEBUG})
+endif()
 
 # copy dependencies
 if (WIN32)
