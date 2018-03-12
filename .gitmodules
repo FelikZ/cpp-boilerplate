@@ -1,13 +1,3 @@
-[submodule "third-party/googletest"]
-	branch = release-1.8.0
-	path = third-party/googletest
-	url = https://github.com/google/googletest.git
 [submodule "third-party/FindTBB"]
 	path = third-party/FindTBB
 	url = https://github.com/justusc/FindTBB.git
-[submodule "third-party/opencv"]
-	path = third-party/opencv
-	url = https://github.com/opencv/opencv.git
-[submodule "third-party/dlib"]
-	path = third-party/dlib
-	url = https://github.com/davisking/dlib.git
