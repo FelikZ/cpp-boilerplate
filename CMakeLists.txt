@@ -13,9 +13,6 @@ find_package(TBB)
 MESSAGE( STATUS "TBB_INCLUDE_DIRS:         " ${TBB_INCLUDE_DIRS} )
 MESSAGE( STATUS "TBB_LIBRARIES:         " ${TBB_LIBRARIES} )
 
-set(TBB_SEARCH_BINARY $ENV{TBB_BINARY_DIR})
-MESSAGE( STATUS "TBB_SEARCH_BINARY:         " ${TBB_SEARCH_BINARY} )
-
 # Main entry point.
 add_executable(main ./src/main.cpp)
 
@@ -28,8 +25,15 @@ target_compile_definitions(main PRIVATE ${TBB_DEFINITIONS})
 target_link_libraries(main general ${TBB_LIBRARIES})
 
 # copy dependencies
-file(GLOB TBB_BINARIES ${TBB_SEARCH_BINARY}/*.*)
-MESSAGE( STATUS "TBB_BINARIES:         " ${TBB_BINARIES} )
+if (WIN32)
+  set(TBB_SEARCH_BINARY $ENV{TBB_BINARY_DIR})
+  MESSAGE( STATUS "TBB_SEARCH_BINARY:         " ${TBB_SEARCH_BINARY} )
+
+  file(GLOB TBB_BINARIES ${TBB_SEARCH_BINARY}/*.*)
+  MESSAGE( STATUS "TBB_BINARIES:         " ${TBB_BINARIES} )
+else()
+  set(TBB_BINARIES ${TBB_LIBRARIES})
+endif()
 
 add_custom_command(TARGET main POST_BUILD        # Adds a post-build event to MyTest
     COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
