@@ -5,55 +5,91 @@ set(CMAKE_CXX_STANDARD 14)
 # Call cmake with -D TESTS=ON to set this flag to true.
 option(TESTS "build tests" OFF)
 
-project(sample_project CXX)
+# set(HUNTER_STATUS_DEBUG "Print a lot of info" ON)
+set(
+  HUNTER_ROOT "${CMAKE_SOURCE_DIR}/data"
+  CACHE STRING
+  "Where build modules will be downloaded"
+)
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/third-party/FindTBB")
+include(ExternalProject)
 
-find_package(TBB)
-MESSAGE( STATUS "TBB_INCLUDE_DIRS:         " ${TBB_INCLUDE_DIRS} )
-MESSAGE( STATUS "TBB_LIBRARIES:         " ${TBB_LIBRARIES} )
+### Hunter snapshot that will be used ###
+include(third-party/gate/HunterGate.cmake)
+HunterGate(
+  URL "https://github.com/ruslo/hunter/archive/v0.20.18.tar.gz"
+  SHA1 "c2614bc107a5172c167a5784f476b6fb39e314a9"
+)
+include(third-party/tbb/TBBGET.cmake)
+# include(third-pathy/tbb/TBBBuild.cmake)
+
+project(computer_vision)
+
+### Download dependencies ###
+
+if (NOT TBB_ROOT)
+  MESSAGE(STATUS "TBB NOT FOUND")
+
+  tbb_get(
+    SAVE_TO "${HUNTER_ROOT}/tbb"
+    RELEASE_TAG 2018_U2
+    TBB_ROOT tbb_root
+    CONFIG_DIR TBB_DIR
+  )
+  if (tbb_root)
+    set(TBB_ROOT ${tbb_root} CACHE STRING "TBB download root")
+  endif()
+else()
+  MESSAGE(STATUS "TBB FOUND:     ${TBB_ROOT}")
+  set(TBB_DIR ${TBB_ROOT}/cmake)
+endif()
+# tbb_build(ROOT "${HUNTER_ROOT}/tbb")
+hunter_add_package(OpenCV)
+hunter_add_package(dlib)
+hunter_add_package(GTest)
+
+### Find dependencies ###
+find_package(TBB REQUIRED tbb)
+find_package(OpenCV REQUIRED)
+find_package(dlib CONFIG REQUIRED)
 
 # Main entry point.
 add_executable(main ./src/main.cpp)
 
 # Add flags.
 target_compile_options(main PRIVATE -W4)
-target_include_directories(main PRIVATE ${TBB_INCLUDE_DIRS})
 target_compile_definitions(main PRIVATE ${TBB_DEFINITIONS})
 
 # Link
-target_link_libraries(main general ${TBB_LIBRARIES})
-if (WIN32)
-  target_link_libraries(main debug ${TBB_LIBRARIES_DEBUG})
-endif()
+target_link_libraries(main general ${OpenCV_LIBS} dlib::dlib TBB::tbb)
+
+# if (WIN32)
+#   target_link_libraries(main debug ${TBB_LIBRARIES_DEBUG})
+# endif()
 
 # copy dependencies
-if (WIN32)
-  set(TBB_SEARCH_BINARY $ENV{TBB_BINARY_DIR})
-  MESSAGE( STATUS "TBB_SEARCH_BINARY:         " ${TBB_SEARCH_BINARY} )
+# if (WIN32)
+#   set(TBB_SEARCH_BINARY $ENV{TBB_BINARY_DIR})
+#   MESSAGE( STATUS "TBB_SEARCH_BINARY:         " ${TBB_SEARCH_BINARY} )
 
-  file(GLOB TBB_BINARIES ${TBB_SEARCH_BINARY}/*.*)
-  MESSAGE( STATUS "TBB_BINARIES:         " ${TBB_BINARIES} )
-else()
-  set(TBB_BINARIES ${TBB_LIBRARIES})
-endif()
+#   file(GLOB TBB_BINARIES ${TBB_SEARCH_BINARY}/*.*)
+#   MESSAGE( STATUS "TBB_BINARIES:         " ${TBB_BINARIES} )
+# else()
+#   set(TBB_BINARIES ${TBB_LIBRARIES})
+# endif()
 
-add_custom_command(TARGET main POST_BUILD        # Adds a post-build event to MyTest
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
-    ${TBB_BINARIES}
-    $<TARGET_FILE_DIR:main>)                 # <--this is out-file path
+# add_custom_command(TARGET main POST_BUILD        # Adds a post-build event to MyTest
+#     COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
+#     ${TBB_BINARIES}
+#     $<TARGET_FILE_DIR:main>)                 # <--this is out-file path
 
 
+### Testing ###
 if(TESTS)
 
   enable_testing()
 
-  # Process the CMakeLists.txt in third-party/googletest, sets project(gtest) and
-  # project(gmock), gives access to ${gtest_SOURCE_DIR} and ${gmock_SOURCE_DIR}.
-  add_subdirectory(third-party/googletest)
-
-  include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-  include_directories(${gmock_SOURCE_DIR}/include ${gmock_SOURCE_DIR})
+  find_package(GTest CONFIG REQUIRED) # GTest::main
 
   # Tests. *-test.cpp should be added here.
   add_executable(tests
@@ -63,11 +99,8 @@ if(TESTS)
 
   # Link core, pthread and gtest to tests.
   target_link_libraries(tests
-    pthread
-    gtest
-    gtest_main
-    core)
-
+    GTest::main
+  )
 endif()
 
 # ------------------------- Begin Generic CMake Variable Logging ------------------

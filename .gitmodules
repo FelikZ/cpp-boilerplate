@@ -1,3 +1,0 @@
-[submodule "third-party/FindTBB"]
-	path = third-party/FindTBB
-	url = https://github.com/justusc/FindTBB.git

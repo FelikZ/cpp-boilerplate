@@ -6,19 +6,8 @@
         "thread": "cpp"
     },
     "editor.formatOnSave": true,
-    // OSX
-    "cmake.osx.environment": {
-        "TBB_BINARY_DIR": "/usr/local/Cellar/tbb/2018_U2/lib"
-    },
-    // Windows
-    "cmake.windows.environment": {
-        "TBB_INSTALL_DIR": "C:/Users/Home/lib/tbb",
-        "TBB_BINARY_DIR": "C:/Users/Home/lib/tbb/bin/intel64/vc14",
-        "LIBRARY_PATH": "C:/Users/Home/lib/tbb/lib/intel64/vc14"
-    },
-    "cmake.windows.generator": "Visual Studio 15 2017 Win64",
     "clang-format.executable": "clang-format",
-    // General
     "C_Cpp.clang_format_path": "clang-format",
+    "cmake.windows.generator": "Visual Studio 15 2017 Win64",
     "cmake.generator": "Unix Makefiles"
 }
