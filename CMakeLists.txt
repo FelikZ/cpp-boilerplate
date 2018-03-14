@@ -27,7 +27,8 @@ include(third-party/tbb/TBBBuild.cmake)
 project(computer_vision)
 
 ### Download dependencies ###
-if (NOT TBB_DIR)
+find_package(TBB 2018)
+if (NOT TBB_FOUND)
   MESSAGE(STATUS "TBB NOT FOUND")
 
   tbb_get(
@@ -43,18 +44,32 @@ if (NOT TBB_DIR)
   if (TBB_DIR)
     set(TBB_DIR ${TBB_DIR} CACHE STRING "TBB config dir")
   endif()
+  find_package(TBB 2018 REQUIRED)
 else()
   MESSAGE(STATUS "TBB FOUND:     ${TBB_DIR}")
 endif()
+MESSAGE(STATUS "TBB_VERSION: ${TBB_VERSION}")
 
-hunter_add_package(OpenCV)
-hunter_add_package(dlib)
-hunter_add_package(GTest)
+find_package(OpenCV 3.4)
+if (NOT OpenCV_FOUND)
+  hunter_add_package(OpenCV)
+  find_package(OpenCV 3.4 REQUIRED)
+endif()
+MESSAGE(STATUS "OpenCV_VERSION: ${OpenCV_VERSION}")
 
-### Find dependencies ###
-find_package(TBB REQUIRED tbb)
-find_package(OpenCV REQUIRED)
-find_package(dlib CONFIG REQUIRED)
+find_package(dlib 19.8)
+if (NOT dlib_FOUND)
+  hunter_add_package(dlib)
+  find_package(dlib 19.8 REQUIRED)
+endif()
+MESSAGE(STATUS "dlib_VERSION: ${dlib_VERSION}")
+
+find_package(GTest)
+if (NOT GTEST_FOUND)
+  hunter_add_package(GTest)
+  find_package(GTest REQUIRED)
+endif()
+MESSAGE(STATUS "GTEST_VERSION: ${GTEST_VERSION}")
 
 # Main entry point.
 add_executable(main ./src/main.cpp)
@@ -236,3 +251,9 @@ MESSAGE( STATUS "CMAKE_RANLIB: " ${CMAKE_RANLIB} )
 #MESSAGE( STATUS ": " ${} )
 
 # ------------------------- End of Generic CMake Variable Logging ------------------
+
+# #DEBUG
+# get_cmake_property(_variableNames VARIABLES)
+# foreach (_variableName ${_variableNames})
+#     message(STATUS "${_variableName}=${${_variableName}}")
+# endforeach()
