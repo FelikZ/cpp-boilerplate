@@ -32,7 +32,14 @@
             "includePath": [
                 "/usr/include",
                 "/usr/local/include",
-                "${workspaceRoot}"
+                "${workspaceRoot}",
+                "${workspaceRoot}/data/_Base/c2614bc/8cb9cb1/e7e216b/Install/include",
+                "/usr/include/c++/5",
+                "${workspaceRoot}/data/tbb/2018_U2/tbb-2018_U2/include",
+                "/usr/include/x86_64-linux-gnu/c++/5",
+                "/usr/include/x86_64-linux-gnu",
+                "/usr/lib/llvm-3.8/lib/clang/3.8.0/include",
+                "${workspaceRoot}/data/_Base/Cellar/6a40d2bed383b51008d03de86ec972fbeba38068/6a40d2b/raw/include"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",

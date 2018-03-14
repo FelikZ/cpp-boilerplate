@@ -7,7 +7,9 @@
     },
     "editor.formatOnSave": true,
     "clang-format.executable": "clang-format",
-    "C_Cpp.clang_format_path": "clang-format",
+    // file, LLVM, Google, Chromium, Mozilla, WebKit or json configure)
+    "clang-format.style": "WebKit",
+    // "C_Cpp.clang_format_path": "clang-format",
     "cmake.windows.generator": "Visual Studio 15 2017 Win64",
     "cmake.generator": "Unix Makefiles"
 }

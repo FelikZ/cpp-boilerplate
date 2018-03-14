@@ -7,11 +7,12 @@
 
 #pragma warning(push)
 #pragma warning(disable : 4180)
+#include <dlib/image_processing/frontal_face_detector.h>
 #include <iostream>
+#include <opencv2/opencv.hpp>
 #include <tbb/concurrent_queue.h>
 #include <tbb/parallel_invoke.h>
 #include <tbb/task_group.h>
-#include <thread>
 #pragma warning(pop)
 
 // TODO: reference additional headers your program requires here
