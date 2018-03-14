@@ -19,8 +19,9 @@ include(third-party/gate/HunterGate.cmake)
 HunterGate(
   URL "https://github.com/ruslo/hunter/archive/v0.20.18.tar.gz"
   SHA1 "c2614bc107a5172c167a5784f476b6fb39e314a9"
+  FILEPATH "${CMAKE_SOURCE_DIR}/hunter.cmake"
 )
-include(third-party/tbb/TBBGET.cmake)
+include(third-party/tbb/TBBGet.cmake)
 # include(third-pathy/tbb/TBBBuild.cmake)
 
 project(computer_vision)
@@ -57,8 +58,7 @@ find_package(dlib CONFIG REQUIRED)
 add_executable(main ./src/main.cpp)
 
 # Add flags.
-target_compile_options(main PRIVATE -W4)
-target_compile_definitions(main PRIVATE ${TBB_DEFINITIONS})
+# target_compile_options(main PRIVATE -W4)
 
 # Link
 target_link_libraries(main general ${OpenCV_LIBS} dlib::dlib TBB::tbb)
