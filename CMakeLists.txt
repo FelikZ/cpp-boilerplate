@@ -22,29 +22,31 @@ HunterGate(
   FILEPATH "${CMAKE_SOURCE_DIR}/hunter.cmake"
 )
 include(third-party/tbb/TBBGet.cmake)
-# include(third-pathy/tbb/TBBBuild.cmake)
+include(third-party/tbb/TBBBuild.cmake)
 
 project(computer_vision)
 
 ### Download dependencies ###
-
-if (NOT TBB_ROOT)
+if (NOT TBB_DIR)
   MESSAGE(STATUS "TBB NOT FOUND")
 
   tbb_get(
     SAVE_TO "${HUNTER_ROOT}/tbb"
     RELEASE_TAG 2018_U2
     TBB_ROOT tbb_root
+    SOURCE_CODE
+  )
+  tbb_build(
+    TBB_ROOT ${tbb_root}
     CONFIG_DIR TBB_DIR
   )
-  if (tbb_root)
-    set(TBB_ROOT ${tbb_root} CACHE STRING "TBB download root")
+  if (TBB_DIR)
+    set(TBB_DIR ${TBB_DIR} CACHE STRING "TBB config dir")
   endif()
 else()
-  MESSAGE(STATUS "TBB FOUND:     ${TBB_ROOT}")
-  set(TBB_DIR ${TBB_ROOT}/cmake)
+  MESSAGE(STATUS "TBB FOUND:     ${TBB_DIR}")
 endif()
-# tbb_build(ROOT "${HUNTER_ROOT}/tbb")
+
 hunter_add_package(OpenCV)
 hunter_add_package(dlib)
 hunter_add_package(GTest)
@@ -62,27 +64,6 @@ add_executable(main ./src/main.cpp)
 
 # Link
 target_link_libraries(main general ${OpenCV_LIBS} dlib::dlib TBB::tbb)
-
-# if (WIN32)
-#   target_link_libraries(main debug ${TBB_LIBRARIES_DEBUG})
-# endif()
-
-# copy dependencies
-# if (WIN32)
-#   set(TBB_SEARCH_BINARY $ENV{TBB_BINARY_DIR})
-#   MESSAGE( STATUS "TBB_SEARCH_BINARY:         " ${TBB_SEARCH_BINARY} )
-
-#   file(GLOB TBB_BINARIES ${TBB_SEARCH_BINARY}/*.*)
-#   MESSAGE( STATUS "TBB_BINARIES:         " ${TBB_BINARIES} )
-# else()
-#   set(TBB_BINARIES ${TBB_LIBRARIES})
-# endif()
-
-# add_custom_command(TARGET main POST_BUILD        # Adds a post-build event to MyTest
-#     COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
-#     ${TBB_BINARIES}
-#     $<TARGET_FILE_DIR:main>)                 # <--this is out-file path
-
 
 ### Testing ###
 if(TESTS)
