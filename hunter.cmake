@@ -1,0 +1,1 @@
+hunter_config(dlib VERSION 19.8-p1 CMAKE_ARGS CMAKE_CXX_STANDARD=11)
