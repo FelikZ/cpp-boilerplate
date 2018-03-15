@@ -1,5 +1,6 @@
 {
-    "configurations": [{
+    "configurations": [
+        {
             "name": "Mac",
             "includePath": [
                 "/usr/local/include",
@@ -39,7 +40,8 @@
                 "/usr/include/x86_64-linux-gnu/c++/5",
                 "/usr/include/x86_64-linux-gnu",
                 "/usr/lib/llvm-3.8/lib/clang/3.8.0/include",
-                "${workspaceRoot}/data/_Base/Cellar/6a40d2bed383b51008d03de86ec972fbeba38068/6a40d2b/raw/include"
+                "${workspaceRoot}/data/_Base/Cellar/6a40d2bed383b51008d03de86ec972fbeba38068/6a40d2b/raw/include",
+                "${workspaceRoot}/data/_Base/Cellar/d60c5b927c00f50ab7fee9976b75325d18306b3b/d60c5b9/raw/include"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",

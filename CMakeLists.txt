@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 set(CMAKE_CXX_STANDARD 14) 
 
 # Call cmake with -D TESTS=ON to set this flag to true.
-option(TESTS "build tests" OFF)
+option(TESTS "build tests" ON)
 
 # set(HUNTER_STATUS_DEBUG "Print a lot of info" ON)
 set(
