@@ -1,5 +1,6 @@
 {
-    "configurations": [{
+    "configurations": [
+        {
             "name": "Mac",
             "includePath": [
                 "/usr/local/include",
@@ -64,8 +65,9 @@
                 "C:/Program Files (x86)/Windows Kits/8.1/Include/um",
                 "C:/Program Files (x86)/Windows Kits/8.1/Include/shared",
                 "C:/Program Files (x86)/Windows Kits/8.1/Include/winrt",
-                "${env.USERPROFILE}/lib/tbb/include",
-                "${workspaceRoot}"
+                "${workspaceRoot}",
+                "${workspaceRoot}/data/tbb/tbb2018_20171205oss_win/tbb2018_20171205oss/include",
+                "${workspaceRoot}/data/_Base/c2614bc/1f394eb/87b1a22/Install/include"
             ],
             "defines": [
                 "_DEBUG",

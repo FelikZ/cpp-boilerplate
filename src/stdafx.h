@@ -7,6 +7,10 @@
 
 #pragma warning(push)
 #pragma warning(disable : 4180)
+#ifdef _WIN32
+#include <sdkddkver.h>
+#endif
+
 #include <dlib/image_processing/frontal_face_detector.h>
 #include <iostream>
 #include <opencv2/opencv.hpp>
