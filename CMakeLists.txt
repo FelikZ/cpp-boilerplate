@@ -38,12 +38,12 @@ if (NOT TBB_FOUND)
     SAVE_TO "${HUNTER_ROOT}/tbb"
     RELEASE_TAG 2018_U2
     TBB_ROOT tbb_root
-    SOURCE_CODE
-  )
-  tbb_build(
-    TBB_ROOT ${tbb_root}
     CONFIG_DIR TBB_DIR
+    # SOURCE_CODE
   )
+  # tbb_build(
+  #   TBB_ROOT ${tbb_root}
+  # )
   find_package(TBB 2018 REQUIRED)
   if (TBB_DIR)
     set(tbb_dir ${TBB_DIR} CACHE STRING "TBB config dir")
