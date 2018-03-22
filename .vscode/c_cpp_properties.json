@@ -1,6 +1,5 @@
 {
-    "configurations": [
-        {
+    "configurations": [{
             "name": "Mac",
             "includePath": [
                 "/usr/local/include",
@@ -8,7 +7,8 @@
                 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include",
                 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
                 "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include",
-                "${workspaceRoot}"
+                "${workspaceRoot}",
+                "${workspaceRoot}/third-party/stlab_libraries"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",
@@ -40,6 +40,7 @@
                 "/usr/include/x86_64-linux-gnu/c++/5",
                 "/usr/include/x86_64-linux-gnu",
                 "/usr/lib/llvm-3.8/lib/clang/3.8.0/include",
+                "${workspaceRoot}/third-party/stlab_libraries",
                 "${workspaceRoot}/data/_Base/Cellar/6a40d2bed383b51008d03de86ec972fbeba38068/6a40d2b/raw/include"
             ],
             "defines": [],
@@ -67,7 +68,18 @@
                 "C:/Program Files (x86)/Windows Kits/8.1/Include/winrt",
                 "${workspaceRoot}",
                 "${workspaceRoot}/data/tbb/tbb2018_20171205oss_win/tbb2018_20171205oss/include",
-                "${workspaceRoot}/data/_Base/c2614bc/1f394eb/87b1a22/Install/include"
+                "${workspaceRoot}/third-party/stlab_libraries",
+                "find data/_Base/Cellar/ -type d -name 'include' | xargs -I{} echo '{},'",
+                "${workspaceRoot}/data/_Base/Cellar/18d50dc1df3f61f2aa70e0c44d0759b26afd7afa/18d50dc/raw/include",
+                "${workspaceRoot}/data/_Base/Cellar/37f0a3d840fc01b0d1653d0ac4bd82b35827e17e/37f0a3d/raw/include",
+                "${workspaceRoot}/data/_Base/Cellar/409b36642b1f2cf17c5130f3de319f9353940a45/409b366/raw/include",
+                "${workspaceRoot}/data/_Base/Cellar/5bdf973d12d27f80032aea03506ef94976480e2c/5bdf973/raw/include",
+                "${workspaceRoot}/data/_Base/Cellar/8787b7c40b32d2c1a92bd14af86029bc7ca737c5/8787b7c/raw/include",
+                "${workspaceRoot}/data/_Base/Cellar/b3b45cfc513bb3beae10d9b20a8fc3f8b4094c1b/b3b45cf/raw/include",
+                "${workspaceRoot}/data/_Base/Cellar/dce19be131ef9355aad686476b76bfc1b73d97ea/dce19be/raw/include",
+                "${workspaceRoot}/data/_Base/Cellar/e6577495eacfca839c2fd5a2c0d16adeef59a87e/e657749/raw/include",
+                "${workspaceRoot}/data/_Base/Cellar/eaa33747a354b4e6bc7c648471b461c50656ea76/eaa3374/raw/include",
+                "${workspaceRoot}/data/_Base/Cellar/fee9b900c441346e3a535746240c8a1719672535/fee9b90/raw/include"
             ],
             "defines": [
                 "_DEBUG",

@@ -1,6 +1,7 @@
-cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
-set(CMAKE_CXX_STANDARD 14) 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Call cmake with -D TESTS=ON to set this flag to true.
 option(TESTS "build tests" OFF)
@@ -21,37 +22,37 @@ HunterGate(
   SHA1 "c2614bc107a5172c167a5784f476b6fb39e314a9"
   FILEPATH "${CMAKE_SOURCE_DIR}/hunter.cmake"
 )
-include(third-party/tbb/TBBGet.cmake)
-include(third-party/tbb/TBBBuild.cmake)
+# include(third-party/tbb/TBBGet.cmake)
+# include(third-party/tbb/TBBBuild.cmake)
 
 project(computer_vision)
 
 ### Download dependencies ###
-if(tbb_dir)
-  set(TBB_DIR ${tbb_dir})
-endif()
-find_package(TBB 2018 QUIET)
-if (NOT TBB_FOUND)
-  MESSAGE(STATUS "TBB NOT FOUND")
+# if(tbb_dir)
+#   set(TBB_DIR ${tbb_dir})
+# endif()
+# find_package(TBB 2018 QUIET)
+# if (NOT TBB_FOUND)
+#   MESSAGE(STATUS "TBB NOT FOUND")
 
-  tbb_get(
-    SAVE_TO "${HUNTER_ROOT}/tbb"
-    RELEASE_TAG 2018_U2
-    TBB_ROOT tbb_root
-    CONFIG_DIR TBB_DIR
-    # SOURCE_CODE
-  )
-  # tbb_build(
-  #   TBB_ROOT ${tbb_root}
-  # )
-  find_package(TBB 2018 REQUIRED)
-  if (TBB_DIR)
-    set(tbb_dir ${TBB_DIR} CACHE STRING "TBB config dir")
-  endif()
-else()
-  MESSAGE(STATUS "TBB FOUND:     ${TBB_DIR}")
-endif()
-MESSAGE(STATUS "TBB_VERSION: ${TBB_VERSION}")
+#   tbb_get(
+#     SAVE_TO "${HUNTER_ROOT}/tbb"
+#     RELEASE_TAG 2018_U2
+#     TBB_ROOT tbb_root
+#     CONFIG_DIR TBB_DIR
+#     # SOURCE_CODE
+#   )
+#   # tbb_build(
+#   #   TBB_ROOT ${tbb_root}
+#   # )
+#   find_package(TBB 2018 REQUIRED)
+#   if (TBB_DIR)
+#     set(tbb_dir ${TBB_DIR} CACHE STRING "TBB config dir")
+#   endif()
+# else()
+#   MESSAGE(STATUS "TBB FOUND:     ${TBB_DIR}")
+# endif()
+# MESSAGE(STATUS "TBB_VERSION: ${TBB_VERSION}")
 
 find_package(OpenCV 3.4 QUIET)
 if (NOT OpenCV_FOUND)
@@ -74,14 +75,23 @@ if (NOT GTEST_FOUND)
 endif()
 MESSAGE(STATUS "GTEST_VERSION: ${GTEST_VERSION}")
 
+# add_subdirectory(third-party/stlab_libraries)
+
 # Main entry point.
 add_executable(main ./src/main.cpp)
 
 # Add flags.
 # target_compile_options(main PRIVATE -W4)
+# set_property(TARGET main PROPERTY CXX_STANDARD 17)
+# set_property(TARGET main PROPERTY CXX_STANDARD_REQUIRED ON)
+target_include_directories(main PRIVATE third-party/stlab_libraries)
 
 # Link
-target_link_libraries(main general ${OpenCV_LIBS} dlib::dlib TBB::tbb)
+target_link_libraries(
+  main
+  general ${OpenCV_LIBS} dlib::dlib
+  # stlab
+)
 
 ### Testing ###
 if(TESTS)

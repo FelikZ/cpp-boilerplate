@@ -14,9 +14,10 @@
 #include <dlib/image_processing/frontal_face_detector.h>
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include <tbb/concurrent_queue.h>
-#include <tbb/parallel_invoke.h>
-#include <tbb/task_group.h>
+
+#define STLAB_CPP_VERSION 17
+#include <stlab/concurrency/channel.hpp>
+#include <stlab/concurrency/default_executor.hpp>
 #pragma warning(pop)
 
 // TODO: reference additional headers your program requires here

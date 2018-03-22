@@ -1,0 +1,3 @@
+[submodule "third-party/stlab_libraries"]
+	path = third-party/stlab_libraries
+	url = https://github.com/stlab/libraries.git
