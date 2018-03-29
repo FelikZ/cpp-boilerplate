@@ -16,6 +16,9 @@
 #include <opencv2/opencv.hpp>
 
 #define STLAB_CPP_VERSION 17
+#include <stlab/concurrency/config.hpp>
+#define STLAB_TASK_SYSTEM STLAB_TASK_SYSTEM_PORTABLE
+
 #include <stlab/concurrency/channel.hpp>
 #include <stlab/concurrency/default_executor.hpp>
 #pragma warning(pop)

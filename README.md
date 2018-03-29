@@ -32,10 +32,23 @@ xcode-select --install
 
 ### Linux
 
-```
-apt-get install clang -y
-# make Clang default compiler
-sudo update-alternatives --config c++
+You need g++ 7.1 to support c++17 standard and <variant>
 
-# yum install clang -y
+```
+# ubuntu
+#wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+#sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-5.0 main"
+#sudo apt-get update
+#sudo apt-get install -y clang-5.0
+#sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-5.0 1000
+#sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-5.0 1000
+#sudo update-alternatives --config clang
+#sudo update-alternatives --config clang++
+#sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 1000
+
+sudo add-apt-repository ppa:jonathonf/gcc-7.1
+sudo apt-get update
+sudo apt-get install -y gcc-7 g++-7
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 1000
+sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++ 1000
 ```
